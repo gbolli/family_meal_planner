@@ -9,6 +9,13 @@ require('dotenv').config({ path: './config/.env' })
 // Connect to database
 connectDB()
 
+// Static folder
+app.use(express.static('public'))
+
+// Body Parsing
+app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
+
 // Logging
 app.use(logger('dev'))
 
