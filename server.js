@@ -1,12 +1,12 @@
 const express = require('express');
 const app = express();
 
-const PORT = 3000;
+require('dotenv').config({ path: './config/.env' })
 
 app.get('/', (req, res) => {
     res.sendFile(__dirname + `/index.html`)
 })
 
-app.listen(PORT, () => {
-    console.log(`Running on port ${PORT}`)
+app.listen(process.env.PORT, () => {
+    console.log(`Running on port ${process.env.PORT}`)
 })
