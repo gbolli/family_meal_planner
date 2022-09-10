@@ -3,6 +3,8 @@ const app = express();
 const connectDB = require('./config/database')
 const logger = require('morgan')
 
+const mainRoutes = require('./routes/main')
+
 // Use dotenv file from config folder
 require('dotenv').config({ path: './config/.env' })
 
@@ -19,9 +21,8 @@ app.use(express.json())
 // Logging
 app.use(logger('dev'))
 
-app.get('/', (req, res) => {
-    res.sendFile(__dirname + `/index.html`)
-})
+// Routes
+app.use('/', mainRoutes)
 
 // Run server
 app.listen(process.env.PORT, () => {
