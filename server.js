@@ -11,6 +11,9 @@ require('dotenv').config({ path: './config/.env' })
 // Connect to database
 connectDB()
 
+// Use EJS for views
+app.set('view engine', 'ejs')
+
 // Static folder
 app.use(express.static('public'))
 
