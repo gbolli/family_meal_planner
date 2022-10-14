@@ -31,3 +31,8 @@ app.use('/', mainRoutes)
 app.listen(process.env.PORT, () => {
     console.log(`Running on port ${process.env.PORT}`)
 })
+
+// TODO: create models for DB
+// TODO: create views for login / register
+// TODO: setup user / auth
+// TOOD: create views / partials for weekly, homepage, etc
