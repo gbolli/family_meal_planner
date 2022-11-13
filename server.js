@@ -6,6 +6,7 @@ const passport = require("passport")
 const session = require("express-session")
 const MongoStore = require("connect-mongo")
 const methodOverride = require("method-override")
+const flash = require("express-flash")
 
 const connectDB = require('./config/database')
 const logger = require('morgan')
@@ -50,6 +51,9 @@ app.use(
 // Passport middleware
 app.use(passport.initialize())
 app.use(passport.session())
+
+//Use flash messages for errors, info, ect...
+app.use(flash())
 
 // Routes
 app.use('/', mainRoutes)
