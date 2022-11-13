@@ -1,5 +1,12 @@
-const express = require('express');
-const app = express();
+const express = require('express')
+const app = express()
+
+const mongoose = require("mongoose")
+const passport = require("passport")
+const session = require("express-session")
+const MongoStore = require("connect-mongo")
+const methodOverride = require("method-override")
+
 const connectDB = require('./config/database')
 const logger = require('morgan')
 
@@ -7,6 +14,9 @@ const mainRoutes = require('./routes/main')
 
 // Use dotenv file from config folder
 require('dotenv').config({ path: './config/.env' })
+
+// Passport config
+require("./config/passport")(passport)
 
 // Connect to database
 connectDB()
@@ -24,6 +34,23 @@ app.use(express.json())
 // Logging
 app.use(logger('dev'))
 
+//Use forms for put / delete
+app.use(methodOverride("_method"))
+
+// Setup Sessions - stored in MongoDB
+app.use(
+    session({
+      secret: process.env.SESSION_SECRET,
+      resave: false,
+      saveUninitialized: false,
+      store: MongoStore.create({ mongoUrl: process.env.DB_URL })
+    })
+)
+  
+// Passport middleware
+app.use(passport.initialize())
+app.use(passport.session())
+
 // Routes
 app.use('/', mainRoutes)
 
@@ -33,6 +60,4 @@ app.listen(process.env.PORT, () => {
 })
 
 // TODO: create models for DB
-// TODO: create views for login / register
-// TODO: setup user / auth
 // TOOD: create views / partials for weekly, homepage, etc
