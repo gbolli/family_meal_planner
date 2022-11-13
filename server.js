@@ -64,4 +64,4 @@ app.listen(process.env.PORT, () => {
 })
 
 // TODO: create models for DB
-// TOOD: create views / partials for weekly, homepage, etc
+// TOOD: create views / partials for main view (this week?), history, recipe, recipe list?, etc

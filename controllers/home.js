@@ -4,6 +4,6 @@ module.exports = {
     },
     // TEMP - login test
     getProfile: (req, res) => {
-        res.render(`tempLoggedIn.ejs`)
+        res.render(`tempLoggedIn.ejs`, { user: req.user })
     }
 }

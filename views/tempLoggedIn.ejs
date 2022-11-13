@@ -1,10 +1,12 @@
 <%- include('partials/header') -%>\
 
     <main class="container">
-        <div class="row justify-content-around mt-5">
-            <h3>You are now logged in {USER}</h3>
+        <div class="row justify-content-center">
+            <section class="col-4 mt-5">
+                <h2>You are now logged in <%= user.userName %> </h2>
+                <a href="/logout" class="col-3 btn btn-primary"> Logout </a>
+            </section>
         </div>
-        <a href="/logout" class="col-3 btn btn-primary"> Logout </a>
     </main>
 
 <%- include('partials/footer') -%>
