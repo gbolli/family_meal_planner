@@ -12,6 +12,7 @@ const connectDB = require('./config/database')
 const logger = require('morgan')
 
 const mainRoutes = require('./routes/main')
+const mealRoutes = require('./routes/meal')
 
 // Use dotenv file from config folder
 require('dotenv').config({ path: './config/.env' })
@@ -57,6 +58,7 @@ app.use(flash())
 
 // Routes
 app.use('/', mainRoutes)
+app.use('/meal', mealRoutes)
 
 // Run server
 app.listen(process.env.PORT, () => {
